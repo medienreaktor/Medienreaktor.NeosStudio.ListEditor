@@ -1,0 +1,174 @@
+/*
+ * The shell's Tailwind build only scans the shell's own source, so this plugin
+ * ships its own scoped CSS, prefixed `mrle-` (MedienReaktor List Editor).
+ * Colours come from the shell's palette, which styles.css emits as
+ * `@theme static` custom properties on :root - every one of them with a
+ * literal fallback, so the plugin still looks right against an older shell.
+ * The inputs inside a row are the shell's own editors and bring their styles.
+ *
+ * Light and dark both matter: the shell toggles `.dark` on <html> from the
+ * user's UI mode preference, so every surface is declared twice.
+ */
+
+.mrle-list,
+.mrle-notice {
+  /* Light */
+  --mrle-surface: #ffffff;
+  --mrle-tile-hover: var(--color-neutral-200, #dddddd);
+  --mrle-border: var(--color-neutral-300, #c2c2c2);
+  --mrle-text: var(--color-neutral-950, #141414);
+  --mrle-muted: var(--color-neutral-600, #545454);
+  --mrle-accent: var(--color-blue-500, #00adee);
+  --mrle-danger: var(--color-red-500, #ff460d);
+  --mrle-radius: 0.25rem;
+}
+
+:where(html.dark) .mrle-list,
+:where(html.dark) .mrle-notice {
+  --mrle-surface: var(--color-neutral-950, #141414);
+  --mrle-tile-hover: var(--color-neutral-800, #323232);
+  --mrle-border: var(--color-neutral-700, #3f3f3f);
+  --mrle-text: #ffffff;
+  --mrle-muted: var(--color-neutral-400, #999999);
+}
+
+.mrle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  color: var(--mrle-text);
+  font-size: 0.875rem;
+}
+
+.mrle-list[data-invalid] .mrle-rows,
+.mrle-list[data-invalid] .mrle-empty {
+  outline: 1px solid var(--mrle-danger);
+  outline-offset: 2px;
+  border-radius: var(--mrle-radius);
+}
+
+.mrle-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mrle-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  border-radius: var(--mrle-radius);
+}
+
+.mrle-row[data-dragging] {
+  opacity: 0.5;
+}
+
+.mrle-fields {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+/* Several fields per item: frame them, so one item reads as one unit. */
+.mrle-fields:has(> .mrle-field + .mrle-field) {
+  padding: 0.5rem;
+  border: 1px solid var(--mrle-border);
+  border-radius: var(--mrle-radius);
+}
+
+.mrle-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.mrle-field-label {
+  color: var(--mrle-muted);
+  font-size: 0.75rem;
+}
+
+/* A borderless square button - the shell's `ghost`/`icon-sm` combination. */
+.mrle-icon-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: var(--mrle-radius);
+  background: transparent;
+  color: var(--mrle-muted);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.mrle-icon-button:hover:not(:disabled) {
+  background-color: var(--mrle-tile-hover);
+  color: var(--mrle-text);
+}
+
+.mrle-icon-button:focus-visible,
+.mrle-add:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mrle-accent) 50%, transparent);
+}
+
+.mrle-icon-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.mrle-handle {
+  cursor: grab;
+}
+
+.mrle-handle:active {
+  cursor: grabbing;
+}
+
+.mrle-add {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px dashed var(--mrle-border);
+  border-radius: var(--mrle-radius);
+  background: transparent;
+  color: var(--mrle-text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.mrle-add:hover {
+  border-color: var(--mrle-accent);
+  color: var(--mrle-accent);
+}
+
+.mrle-empty {
+  margin: 0;
+  color: var(--mrle-muted);
+  font-size: 0.8125rem;
+}
+
+.mrle-notice {
+  padding: 0.5rem 0.75rem;
+  border: 1px dashed var(--mrle-border);
+  border-radius: var(--mrle-radius);
+  color: var(--mrle-muted);
+  font-size: 0.8125rem;
+}

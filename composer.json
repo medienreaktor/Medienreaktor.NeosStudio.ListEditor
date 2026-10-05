@@ -1,0 +1,26 @@
+{
+  "name": "medienreaktor/neos-studio-list-editor",
+  "type": "neos-plugin",
+  "description": "A list editor for Neos Studio: edit array properties as a list of strings or of objects, one row per item - add, edit, remove and reorder. Successor of mireo91/repeatablefields, reading the same editor options and the same stored data.",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "neos",
+    "neoscms",
+    "flow",
+    "editor",
+    "list",
+    "repeatable",
+    "neos-studio"
+  ],
+  "require": {
+    "php": "^8.2",
+    "neos/neos": "^9.1",
+    "medienreaktor/neos-studio": "^1.13"
+  },
+  "extra": {
+    "neos": {
+      "package-key": "Medienreaktor.NeosStudio.ListEditor"
+    }
+  }
+}

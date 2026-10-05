@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="" product-name="Medienreaktor.NeosStudio.ListEditor" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="add" xml:space="preserve">
+        <source>Add item</source>
+      </trans-unit>
+      <trans-unit id="empty" xml:space="preserve">
+        <source>No items yet.</source>
+      </trans-unit>
+      <trans-unit id="item.move" xml:space="preserve">
+        <source>Move item {0}</source>
+      </trans-unit>
+      <trans-unit id="item.moveHint" xml:space="preserve">
+        <source>Drag to reorder, or use the arrow keys</source>
+      </trans-unit>
+      <trans-unit id="item.remove" xml:space="preserve">
+        <source>Remove item {0}</source>
+      </trans-unit>
+      <trans-unit id="item.removeMin" xml:space="preserve">
+        <source>At least {0} items are required</source>
+      </trans-unit>
+      <trans-unit id="error.unknownEditor" xml:space="preserve">
+        <source>The editor "{0}" is not registered.</source>
+      </trans-unit>
+      <trans-unit id="error.invalidOption" xml:space="preserve">
+        <source>The editor option "{0}" is invalid ({1}).</source>
+      </trans-unit>
+      <trans-unit id="error.notAList" xml:space="preserve">
+        <source>The stored value is not a list and cannot be edited here.</source>
+      </trans-unit>
+      <trans-unit id="error.expectedObject" xml:space="preserve">
+        <source>Item {0} is a plain value, but the configuration expects objects (itemKey or properties).</source>
+      </trans-unit>
+      <trans-unit id="error.expectedScalar" xml:space="preserve">
+        <source>Item {0} is an object, but the configuration expects plain values. Configure itemKey or properties.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
